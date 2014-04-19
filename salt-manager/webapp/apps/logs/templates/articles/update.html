@@ -1,0 +1,22 @@
+{% extends "articles/base.html" %}
+
+
+{% block left_content %}
+
+{% endblock %}
+
+
+{% block main_content %}
+<form action="{% url 'article_update' product.id %}" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
+
+
+
+{% block right_content %}
+{% include "snippets/ads.html" %}
+
+{% endblock %}

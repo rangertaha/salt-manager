@@ -1,0 +1,17 @@
+{% extends "hosts/base.html" %}
+{% load webdesign %}
+
+
+
+{% block left_content %}
+  {% include "host/snippets/menu.html" %}
+{% endblock %}
+
+
+
+{% block main_content %}
+<h1 style="text-align:center;">{{ host.title|title|safe }}{% if host.subtitle != None %}<small>&nbsp;{{ host.subtitle|title|safe }}</small>{% endif %}</h1>
+{{ host.body|safe }}
+{% endblock %}
+
+

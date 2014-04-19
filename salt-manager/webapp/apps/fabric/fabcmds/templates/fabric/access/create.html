@@ -1,0 +1,18 @@
+{% extends "fabric/base.html" %}
+
+
+
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <div class="pull-right span4">
+        <button class="btn span4" type="submit" value="Submit">Submit</button>
+        <button class="btn span4" type="reset" value="Reset">Reset</button>
+        <a class="btn btn-danger span4" href="../../">Cancel</a>
+    </div>
+</form>
+
+{% endblock %}
+
+

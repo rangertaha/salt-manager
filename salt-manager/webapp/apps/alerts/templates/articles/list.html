@@ -1,0 +1,49 @@
+{% extends "articles/base.html" %}
+
+
+{% block left_content %}
+  {% include "articles/snippets/menu.html" %}
+{% endblock %}
+
+
+{% block main_content %}
+{% if articles.all %}
+    <div class="row-fluid">
+        {% for article in articles.all %}
+        <div class="media">
+             <div class="media-body">
+                <h4 class="media-heading"><a href="{% url 'article_details_pk' article.slug article.id  %}">{{ article.title }} </a><small>{% if article.subtitle %}{{ article.subtitle }}{% endif %}</small></h4>
+                {{ article.description|safe|truncatewords:60 }}
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+{% else %}
+    <h2 style="text-align:center;">No Results </h2>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% include "articles/snippets/pagination.html" %}
+{% endblock %}
+
+
+{% block right_content %}
+{% include "snippets/ads.html" %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="">
+    <ul >
+        {% for m in section.menu.all %}
+        <li><a href="{% url 'page_details' section.slug m.page.slug %}">{{ m.name }}</a>
+            {% for mm in m.children %}
+            <ul  class="">
+                 <li><a href="{% url 'page_details' section.name mm.page.slug %}">{{ mm.name }}</a>
+                     {% for mmm in mm.children %}
+                     <ul  class="">
+                         <li><a href="{% url 'page_details' section.name mmm.page.slug %}">{{ mmm.name }}</a>
+
+                         </li>
+                     </ul>
+                     {% endfor %}
+                 </li>
+            </ul>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+
+
+<!-- class="nav nav-tabs nav-stacked"-->
+
+
+
+
+</div>
+

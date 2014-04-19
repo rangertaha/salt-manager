@@ -1,0 +1,47 @@
+{% extends "hosts/base.html" %}
+
+
+
+
+{% block content %}
+
+
+
+
+<table id="dtable" class="table table-condensed data-table" cellpadding="0" cellspacing="0" border="0" >
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>ip</th>
+        <th>Description</th>
+        <th class="pull-right text-right">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for host in hosts %}
+    <tr>
+        <td><a href="{% url 'host_detail' host.id %}">{{ host.id }}</a></td>
+        <td><a href="{% url 'host_detail' host.id %}">{{ host.name }}</a></td>
+        <td><a href="{% url 'host_detail' host.id %}">{{ host.ip }}</a></td>
+        <td><a href="{% url 'host_detail' host.id %}">{{ host.description }}</a></td>
+        <td>
+            <div class="btn-toolbar pull-right"  style="margin:0;padding:0;">
+                <div class="btn-group">
+                    <a class="btn btn-mini{% if not user.is_superuser %} disabled{% endif %}" href="#"><i class="icon-off"></i></a>
+                    <a class="btn btn-mini{% if not user.is_superuser %} disabled{% endif %}" href="#"><i class="icon-repeat"></i></a>
+                    <a class="btn btn-mini" href="#"><i class="icon-signal"></i></a>
+                    <a class="btn btn-mini{% if not user.is_superuser %} disabled{% endif %}" href="#"><i class="icon-cog"></i></a>
+                </div>
+            </div>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% include "hosts/snippets/pagination.html" %}
+{% endblock %}

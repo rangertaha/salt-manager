@@ -1,0 +1,25 @@
+{% extends "fabric/base.html" %}
+
+
+{% block left_content %}
+
+{% endblock %}
+
+
+{% block content %}
+<form action="{% url 'node_create' %}" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
+
+
+{% block right_content %}
+
+
+{% endblock %}
+
+
+        
+

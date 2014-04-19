@@ -1,0 +1,268 @@
+{% load admin_static %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+
+
+    {% comment %}
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+{% block extrastyle %}{% endblock %}
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+{% endcomment %}
+
+
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+
+
+
+
+
+
+
+<style>
+    html {
+
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        background: url({% if page.bg_image %}{{page.bg_image}}{% else %}{{section.menu.0.page.bg_image}}{% endif %}) no-repeat center center fixed;
+        /* -webkit-background-size: 400px;
+         -moz-background-size: 400px;
+         -o-background-size: 400px;
+         background-size: 400px; */
+    }
+    body {padding-top: 40px;}
+
+</style>
+
+
+
+
+
+
+
+</head>
+{% load i18n %}
+
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+{% include "admin/snippets/navbar.html" %}
+
+
+
+{% if not is_popup %}
+<div id="header"  class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li style="margin-left:0px;padding-left:0px;"><a style="margin:0px;padding:0px;" href="/"></li>
+                    <li style="margin-left:0px;padding-left:0px;"><a class="brand" href="{% url 'index' %}" style="margin-left:0px;padding-left:0px;">CYINTOPS Admin</a></li>
+                </ul>
+
+                {% trans 'Welcome,' %}
+
+                <ul class="nav pull-right">
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        {% if user.is_active and user.is_staff %}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {% filter force_escape %}{% firstof user.get_short_name user.get_username|title %}{% endfilter %} <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+
+                            {% block userlinks %}
+                            {% url 'django-admindocs-docroot' as docsroot %}
+
+                            {% if docsroot %}
+                            <li><a href="{{ docsroot }}"><i class="icon-file"></i> {% trans 'Documentation' %}</a></li>
+                            {% endif %}
+
+
+
+                            {% if user.has_usable_password %}
+                            <li><a href="{% url 'admin:password_change' %}"><i class="icon-cog"></i>{% trans 'Change password' %}</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'admin:logout' %}"><i class="icon-off"></i> {% trans 'Log out' %}</a></li>
+                            {% endblock %}
+
+                        </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+                {% block nav-global %}{% endblock %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    {% block breadcrumbs %}
+   <ul class="breadcrumb">
+        <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
+        {% if title %} &rsaquo; {{ title }}{% endif %}
+    </ul>
+    {% endblock %}
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% block messages %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert  alert-info" {% if message.tags %} class="{{ message.tags }} alert"{% else %} class="alert"{% endif %}>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+
+    {% endblock messages %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}" >
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1 class="hidden">{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+    {% include "admin/snippets/footer.html" %}
+</div>
+<!-- END Container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- _____________bootstrap javascript _____________________ -->
+<script src="/static/bootstrap/js/widgets.js"></script>
+<script src="/static/bootstrap/js/jquery.js"></script>
+<script src="/static/bootstrap/js/prettify.js"></script>
+<script src="/static/bootstrap/js/bootstrap-transition.js"></script>
+<script src="/static/bootstrap/js/bootstrap-alert.js"></script>
+<script src="/static/bootstrap/js/bootstrap-modal.js"></script>
+<script src="/static/bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="/static/bootstrap/js/bootstrap-scrollspy.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tab.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+<script src="/static/bootstrap/js/bootstrap-button.js"></script>
+<script src="/static/bootstrap/js/bootstrap-collapse.js"></script>
+<script src="/static/bootstrap/js/bootstrap-carousel.js"></script>
+<script src="/static/bootstrap/js/bootstrap-typeahead.js"></script>
+<script src="/static/bootstrap/js/bootstrap-affix.js"></script>
+<script src="/static/bootstrap/js/application.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "fabric/base.html" %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+<div class="span12" style="margin-top: 100px;">
+    <div class="span4"></div>
+    <div class="span4">
+        <form class="span12" action="" method="post">{% csrf_token %}
+            <input type="hidden" name="after" value="{{ object.item.get_absolute_url }}" />
+            <input class="btn btn-danger span12" type="submit" value="Remove and return "  name="DeleteAndShowItem" />
+        </form>
+    </div>
+    <div class="span4"></div>
+</div>
+{% endblock %}

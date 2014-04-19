@@ -1,0 +1,17 @@
+{% extends "articles/base.html" %}
+{% load webdesign %}
+
+
+
+{% block left_content %}
+  {% include "article/snippets/menu.html" %}
+{% endblock %}
+
+
+
+{% block main_content %}
+<h1 style="text-align:center;">{{ article.title|title|safe }}{% if article.subtitle != None %}<small>&nbsp;{{ article.subtitle|title|safe }}</small>{% endif %}</h1>
+{{ article.body|safe }}
+{% endblock %}
+
+

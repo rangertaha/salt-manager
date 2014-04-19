@@ -1,0 +1,114 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+
+    <!-- Tweeter Bootstraps -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+
+    <!-- Le styles -->
+    <link href="/static/css/prettify.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/masthead.css" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114x114.png">
+
+
+
+    <script src="/static/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    {% block top_scripts %}{% endblock %}
+
+
+
+    <style>
+        html {
+
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            background: url({% if page.background %}{{page.background}}{% endif %}) no-repeat center center fixed;
+           /* -webkit-background-size: 400px;
+            -moz-background-size: 400px;
+            -o-background-size: 400px;
+            background-size: 400px; */
+        }
+        body {padding-top: 40px;}
+
+    </style>
+
+
+</head>
+
+<body>
+{% include "snippets/navbar/navbar.html" %}
+{% include "snippets/masthead.html" %}
+{% include "articles/snippets/search.html" %}
+{% include "snippets/alerts.html" %}
+{% block headers %}{% endblock %}
+
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span3">
+                {% block left_content %}{% endblock %}
+            </div>
+            <div class="span9">
+                {% block main_content %}{% endblock %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% block bottom_scripts %}{% endblock %}
+
+<!-- _____________bootstrap javascript _____________________ -->
+<script src="/static/bootstrap/js/widgets.js"></script>
+
+<script src="/static/bootstrap/js/prettify.js"></script>
+<script src="/static/bootstrap/js/bootstrap-transition.js"></script>
+<script src="/static/bootstrap/js/bootstrap-alert.js"></script>
+<script src="/static/bootstrap/js/bootstrap-modal.js"></script>
+<script src="/static/bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="/static/bootstrap/js/bootstrap-scrollspy.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tab.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+<script src="/static/bootstrap/js/bootstrap-button.js"></script>
+<script src="/static/bootstrap/js/bootstrap-collapse.js"></script>
+<script src="/static/bootstrap/js/bootstrap-carousel.js"></script>
+<script src="/static/bootstrap/js/bootstrap-typeahead.js"></script>
+<script src="/static/bootstrap/js/bootstrap-affix.js"></script>
+<script src="/static/bootstrap/js/application.js"></script>
+
+
+{% include "snippets/google_analytics.html" %}
+{% include "snippets/footer.html" %}
+</body>
+</html>
+{% endspaceless %}

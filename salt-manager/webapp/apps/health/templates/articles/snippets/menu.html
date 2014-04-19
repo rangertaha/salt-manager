@@ -1,0 +1,164 @@
+
+
+
+{% if section.icon %}<img src="{{ section.icon }}"  style="margin-bottom:0px;padding-bottom:0px;">{% endif %}{{ section.name }}
+
+
+
+
+
+
+
+
+
+
+        <ul class="unstyled" style="margin-left:15px;">
+            {% for menu in section.nav.all %}
+
+
+
+
+
+
+
+
+
+            <li class="">
+
+                {% if menu.is_page %}
+                <a href="{% url 'page_details' menu.section.slug menu.page.slug %}" {% if not menu.page.body %} style="color:red;" {% endif %}><i class="icon-file" style="margin:0px;"></i> {{ menu.name }}</a>
+                {% else %}
+                <i class="icon-folder-open" style="margin:0px;"></i> {{ menu.name }}
+                <ul class="unstyled" style="margin-left:15px;">
+
+                    {% for submenu in menu.children %}
+                    <li  class="">
+
+
+
+                        {% if submenu.is_page %}
+                        <a href="{% url 'page_details' submenu.section.slug submenu.page.slug %}" {% if not submenu.page.body %} style="color:red;" {% endif %}><i class="icon-file" style="margin:0px;"></i> {{ submenu.name }}</a>
+                        {% else %}
+                        <i class="icon-folder-open"></i> {{ submenu.name }}
+                        <ul class="unstyled" style="margin-left:15px;">
+
+                            {% for submenu in submenu.children %}
+                            <li class="">
+
+
+
+
+                                {% if submenu.is_page %}
+                                <a href="{% url 'page_details' submenu.section.slug submenu.page.slug %}" {% if not submenu.page.body %} style="color:red;" {% endif %}><i class="icon-file" style="margin:0px;"></i> {{ submenu.name }}</a>
+                                {% else %}
+                                <i class="icon-folder-open"></i>{{ submenu.name }}
+                                <ul class="unstyled" style="margin-left:15px;">
+
+                                    {% for submenu in submenu.children %}
+                                    <li  class="">
+
+
+                                        {% if submenu.is_page %}
+                                        <a href="{% url 'page_details' submenu.section.slug submenu.page.slug %}" {% if not submenu.page.body %} style="color:red;" {% endif %}><i class="icon-file" style="margin:0px;"></i> {{ submenu.name }}</a>
+                                        {% else %}
+                                        <i class="icon-folder-open"></i>{{ submenu.name }}
+                                        <ul class="unstyled" style="margin-left:15px;">
+
+                                            {% for submenu in submenu.children %}
+                                            <li  class="">
+
+
+
+
+
+
+                                                {% if submenu.is_page %}
+                                                <a href="{% url 'page_details' submenu.section.slug submenu.page.slug %}" {% if not submenu.page.body %} style="color:red;" {% endif %}><i class="icon-file" style="margin:0px;"></i> {{ submenu.name }}</a>
+                                                {% else %}
+                                                <i class="icon-folder-open"></i>{{ submenu.name }}
+
+                                                {% endif %}
+
+
+
+
+
+
+
+
+
+
+                                            </li>
+                                            {% endfor %}
+
+                                        </ul>
+                                        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+                                {% endif %}
+
+
+
+
+
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+
+
+
+
+
+                    </li>
+                    {% endfor %}
+
+                </ul>
+                {% endif %}
+
+
+            </li>
+
+
+
+
+
+
+
+
+
+
+            {% endfor %}
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+{% load tree_objects %}
+
+{% for t in tree.children.all %}
+ <ul>
+    <li><a class="pull-left {% if t.type == 'REPORT' %} text-success{% endif %}" href="{% url 'tree_details' t.pk %}">{{ t.name}}</a></li>
+    {% tree_object t.pk %}
+</ul>
+{% endfor %}

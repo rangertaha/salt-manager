@@ -1,0 +1,16 @@
+{% extends "fabric/base.html" %}
+{% load webdesign %}
+
+
+
+{% block content %}
+  {% include "article/snippets/menu.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+<h1 style="text-align:center;">{{ article.title|title|safe }}{% if article.subtitle != None %}<small>&nbsp;{{ article.subtitle|title|safe }}</small>{% endif %}</h1>
+{{ article.body|safe }}
+{% endblock %}
+

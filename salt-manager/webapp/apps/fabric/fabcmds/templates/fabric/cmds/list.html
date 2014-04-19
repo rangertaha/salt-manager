@@ -1,0 +1,44 @@
+{% extends "fabric/base.html" %}
+
+
+
+
+
+{% block content %}
+{% if fabrics.all %}
+    <div class="row-fluid">
+        {% for fabric in fabrics.all %}
+        <div class="media">
+             <div class="media-body">
+                <h4 class="media-heading"><a href="{% url 'article_details_pk' fabric.slug fabric.id  %}">{{ fabric.title }} </a><small>{% if fabric.hostname %}{{ fabric.subtitle }}{% endif %}</small></h4>
+                {{ fabric.description|safe|truncatewords:60 }}
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+{% else %}
+    <h2 style="text-align:center;">No Results </h2>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% include "fabric/snippets/pagination.html" %}
+{% endblock %}
+
+
+{% block right_content %}
+{% include "snippets/ads.html" %}
+
+{% endblock %}

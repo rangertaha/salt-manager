@@ -1,0 +1,22 @@
+{% extends "pages/base.html" %}
+{% load webdesign %}
+
+{% block left_content %}
+{% include "pages/snippets/menu.html" %}
+{% endblock %}
+
+
+
+{% block main_content %}
+
+
+<h1>{{ page.title|safe }}  </h1>
+
+
+{% if page.body %}
+{{ page.body|safe }}
+{% else %}
+<h1 style="text-align:center;color:red;">Under Development</h1>
+{% endif %}
+
+{% endblock %}

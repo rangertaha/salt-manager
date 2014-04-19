@@ -1,0 +1,18 @@
+{% for message in page.messages %}
+	{% if message.visible %}
+		<div style="margin-bottom:0px;" class="alert {% if message.error %} alert-error {% endif %}{% if message.success %} alert-success {% endif %} {% if message.info %} alert-info {% endif %}"><button type="button" class="close" data-dismiss="alert">×</button><strong>{{ message.title }}</strong>{{ message.body }}</div>
+	{% endif %}
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+

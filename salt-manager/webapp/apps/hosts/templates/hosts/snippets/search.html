@@ -1,0 +1,51 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <form method="GET" class="navbar-search pull-left" action="{% url 'host_list' %}">
+            <input id="search" name="q" class="search-query span6 " placeholder="{{ query|default:"Search..."}}" type="text" >
+
+        </form>
+
+
+        <ul class="nav">
+            {% if request.user.is_authenticated %}
+                {% if  host.name%}<li><a href="{% url 'host_update' host.id %}"><i class="icon-edit"></i> EDIT</a></li>{% endif %}
+                <li><a href="#"><i class=""></i></a></li>
+            {% endif %}
+
+
+
+            {% include "hosts/snippets/menu.html" %}
+
+        </ul>
+        <ul class="nav pull-right">
+            <li class="dropdown pull-right" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Add Host</a></li>
+                    <li><a href="#">-----</a></li>
+                    <li><a href="#">-----</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">------</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>

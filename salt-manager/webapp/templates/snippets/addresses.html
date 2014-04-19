@@ -1,0 +1,57 @@
+<br>
+<br>
+{% for office in page.offices.all %}
+    <address>
+        {% if office.title  %}<strong>{{ office.title }}</strong><br>{% endif %}
+        {% if office.address.building  %}<strong>{{ office.address.building }}</strong><br>{% endif %}
+        {% if office.address.street  %}<span>{{ office.address.street }}</span><br>{% endif %}
+        {% if office.address.city  %}<span>{{ office.address.city }}</span><br>{% endif %}
+        {% if office.address.state  %}<span>{{ office.address.state }}</span><br>{% endif %}
+        {% if office.address.country  %}<span>{{ office.address.country }}</span><br>{% endif %}
+        {% if office.address.zipcode  %}<span>{{ office.address.zipcode }}</span><br>{% endif %}
+        {% for tel in office.tels.all %}
+            {% if tel.number and tel.active  %}<abbr title="Phone">{{ tel.type }}:</abbr> {{ tel.number }}<br>{% endif %}
+        {% endfor %}
+        {% if office.poc.fullname  %}<abbr title="Email">POC: </abbr>{% if office.poc.message  %}<a href="#address-{{ office.poc.id }}-{{ office.poc.lastname }}" data-toggle="modal">{{ office.poc.fullname }}</a>{% else %}{{ office.poc.fullname }}{% endif %}<br>{% endif %}
+        {% for email in office.poc.emails.all %}
+            {% if email.address and email.active  %}<abbr title="Email">Email: </abbr><a href="mailto:{{ email.address }}">{{ email.address }}</a><br>{% endif %}
+        {% endfor %}
+	    <br>
+
+
+    </address>
+
+
+    <!-- Modal -->
+    <div style="width:50%;" id="address-{{ office.poc.id }}-{{ office.poc.lastname }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel"> {{  office.poc.firstname|safe|escape }} {{   office.poc.lastname|safe|escape }} <small> {{  office.poc.position|safe|escape }}</small></h3>
+        </div>
+
+        <div class="modal-body"> {{  office.poc.message|safe|escape }}</div>
+
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+

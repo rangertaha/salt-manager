@@ -1,0 +1,78 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse">
+                <ul class="nav">
+					<li style="margin-left:0px;padding-left:0px;"><a style="margin:0px;padding:0px;" href="/" ><img src="/static/img/logo.png" alt="SaltStack Manager" height="39" width="48" /></a></li>
+					<li style="margin-left:0px;padding-left:0px;"><a class="brand" href="/" style="margin-left:0px;padding-left:0px;">Salt Manager</a></li>
+				</ul>
+                {% if user.is_authenticated %}
+                <ul class="nav">
+                    <li ><a href="{% url 'host_list' %}" >HOSTS</a></li>
+                    <li ><a  href="" >SERVICES</a></li>
+                    <li ><a  href="" >HEALTH</a></li>
+
+                </ul>
+
+                {% endif %}
+                <ul class="nav pull-right">
+                    {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li><a href=""><i class=""></i> Reports</a></li>
+                            <li><a href=""><i class=""></i> Alerts</a></li>
+                            <li><a href=""><i class=""></i> EMail</a></li>
+                            <li id="fat-menu" class="dropdown-submenu">
+                                <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Salt Installation</a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'fabric_access_list' %}">SSH Users</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'fabric_index' %}">Commands</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'fabric_index' %}">Packages</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'fabric_index' %}">History</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {{ user.username|title|default:"Access" }} <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            {% comment %}<li class="divider"></li>{% endcomment %}
+                            {% if not user.is_authenticated %}<li><a href="{% url 'auth_login' %}"><i class="icon-user"></i> Login</a></li>{% endif %}
+                            {% if user.is_authenticated %}<li><a href="{% url 'auth_logout' %}"><i class="icon-off"></i> Logout</a></li>{% endif %}
+                            {% if not user.is_authenticated %}<li><a href="{% url 'registration_register'%}"><i class="icon-cog"></i> SignUp</a></li>{% endif %}
+                            {% if not user.is_authenticated %}<li><a href="{% url 'auth_password_reset' %}"><i class="icon-cog"></i> Reset Password</a></li>{% endif %}
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Info <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            {% comment %}<li><a href=""><i class="icon-glass"></i> About Us</a></li>{% endcomment %}
+                            <li><a href="{% url 'disclaimer' %}"><i class="icon-ban-circle"></i> Disclaimer</a></li>
+                            <li><a href="{% url 'donations' %}"><i class=""></i> Donations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+ 

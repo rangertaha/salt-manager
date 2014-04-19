@@ -1,0 +1,32 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li><a class="brand" href="/" >SSH/Fabric</a></li>
+        </ul>
+
+        <form method="GET" class="navbar-search pull-left" action="">
+            <input id="search" name="q" class="search-query span4" placeholder="{{ query|default:"Search..."}}" type="text" >
+        </form>
+        <ul class="nav nav-tabs">
+
+
+
+            <li class="divider"></li>
+            <li>{% if section == 'access' %}<a href="{% url 'fabric_access_list' %}" class="disabled">&nbsp;&nbsp;Access</a>{% else %}<a href="{% url 'fabric_access_list' %}" class="">&nbsp;&nbsp;Access</a>{% endif %}</li>
+            <li class="{% if section == 'commands' %}active {% endif %}"><a href="#">Commands</a></li>
+            <li class="{% if section == 'packages' %}active {% endif %}"><a href="{% url 'fabric_packages_list' %}">Packages</a></li>
+            <li class="{% if section == 'history' %}active {% endif %}"><a href="#">History</a></li>
+        </ul>
+        <ul class="nav pull-right">
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i>&nbsp;Actions<span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                    {% comment %}<li class="divider"></li>{% endcomment %}
+                    <li><a href="{% url 'fabric_access_create' %}"><i class="icon-user"></i> Add SSH User</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

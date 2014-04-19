@@ -1,0 +1,12 @@
+{% extends "fabric/base.html" %}
+{% load webdesign %}
+
+
+
+
+{% block content %}
+<h1 style="text-align:center;">{{ access.username }}{% if access.subtitle != None %}<small>&nbsp;{{ access.subtitle|title|safe }}</small>{% endif %}</h1>
+{{ access.body|safe }}
+{% endblock %}
+
+

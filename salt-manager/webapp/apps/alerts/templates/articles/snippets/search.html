@@ -1,0 +1,16 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <form method="GET" class="navbar-search pull-left" action="{% url 'articles' %}">
+            <input id="search" name="q" class="search-query span6 " placeholder="{{ query|default:"Search..."}}" type="text" data-provide="typeahead" data-items="6" data-souce="[{% for man in manuals.all %}&quot;{{ man.title }}&quot;,{% endfor %}]">
+
+        </form>
+
+        {% if request.user.is_authenticated %}
+        <ul class="nav">
+            {% if  article.slug and article.id %}<li><a href="{% url 'article_update_pk' article.slug article.id %}"><i class="icon-edit"></i> EDIT</a></li>{% endif %}
+            <li><a href="#"><i class=""></i></a></li>
+        </ul>
+        {% endif %}
+
+    </div>
+</div>

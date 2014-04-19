@@ -1,0 +1,21 @@
+{% extends "fabric/base.html" %}
+{% load webdesign %}
+
+{% block content %}
+<h3>Access</h3>
+{% include "fabric/snippets/access_table.html" %}
+<hr>
+
+<h3>Commands</h3>
+{% include "fabric/snippets/cmd_table.html" %}
+<hr>
+
+<h3>History</h3>
+{% include "fabric/snippets/history_table.html" %}
+<hr>
+
+<h3>Packages</h3>
+{% include "fabric/snippets/pkg_table.html" %}
+<hr>
+
+{% endblock %}

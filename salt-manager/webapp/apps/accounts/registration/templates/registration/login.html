@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<form  class="form-signin" method="post" action=".">{% csrf_token %}
+
+
+    {{ form.as_p }}
+
+
+
+    {% comment %}
+    <input name="username" type="text" class="input-block-level" placeholder="Username/Email">
+    {{ form.username }}
+    <input name="password" type="password" class="input-block-level" placeholder="Password">
+    {{ form.password }}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <label class="checkbox">
+        <input type="checkbox" value="remember-me"> Remember me
+    </label>
+    {% endcomment %}
+
+
+    <input class="btn btn-small" type="submit" value="{% trans 'Log in' %}" />
+
+    <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+    <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+</form>
+{% endblock %}

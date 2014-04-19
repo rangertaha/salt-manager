@@ -1,0 +1,46 @@
+/*
+@media (max-width: 1000px){
+    .media-body{
+        color: red;
+        visibility: hidden;
+    }
+    #left_content{
+        visibility: hidden;
+    }
+    .jumbotron{
+        visibility: hidden;
+        height: 0px;
+        top: 0px;
+    }
+    .masthead{
+        visibility: hidden;
+        height: 0px;
+        top: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .hidden-desktop {
+        display: inherit !important;
+    }
+}
+
+@media (max-width: 320px){
+    .leftHalf{ width: 100%; color: red; }
+    .rightHalf{ width: 100%; color: blue; }
+}
+*/
+html {
+
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 400px;
+    --background: url(/static/img/test/bg.png) no-repeat center center fixed;
+    -webkit-background-size: 400px;
+    -moz-background-size: 400px;
+    -o-background-size: 400px;
+    background-size: 400px;
+}
